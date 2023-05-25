@@ -57,6 +57,8 @@ app.get('/restart_server', (req, res) => {
 
 	questions = require('./questions.json')
 
+	console.warn('SERVER RESTARTING')
+
 })
 
 app.get("/", (req, res) => {
