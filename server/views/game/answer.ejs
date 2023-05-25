@@ -1,0 +1,28 @@
+<%- include ('../components/head', {
+    links: ['/css/pages/answer.css']
+}) %> 
+<div class="d-flex flex-center flex-column <%- correct === "true" ? "question-correct" : "question-false" %>">
+    <% if(correct === "true"){%>
+        <h1 class="title fredoka">Goedzo!</h1>
+        <div class="spacer"></div>
+        <h1>Je had het juist!</h1>
+    <% } else{ %>
+        <h1 class="title fredoka">Oei</h1>
+        <div class="spacer"></div>
+        <h1>Dat was niet juist...</h1>
+    <% } %>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <h2>Jouw score</h2>
+    <div class="score-container">
+        <span class="fredoka"><%- score %></span>
+    </div>
+</div>
+
+<%- include('../components/scripts') %>
+<script defer>
+    socket.on('show-answer', () => {
+        window.location.href = "/game/question/<%- (currentQuestion) %>"
+    })
+</script>
+<%- include('../components/foot') %>

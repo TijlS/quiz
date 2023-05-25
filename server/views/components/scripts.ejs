@@ -1,0 +1,14 @@
+<div class="overlay-nowifi">
+    <h1 class="title fredoka">Geen internet</h1>
+    <div class="spacer"></div>
+    <div class="loading"></div>
+</div>
+<script src="/main.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script defer>
+    const socket = io();
+
+    const noInternetOverlay = document.querySelector('.overlay-nowifi');
+    window.addEventListener('online', () => noInternetOverlay.style.display = "none");
+    window.addEventListener('offline', () => noInternetOverlay.style.display = "flex");
+</script>

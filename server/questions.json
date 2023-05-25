@@ -1,0 +1,281 @@
+[
+    {
+        "questionType": "txtarea",
+        "question": "Wat is er gebeurd in 1968 dat zo belangrijk was voor de Nederlandse Taalgeschiedenis?",
+        "keywords" : [
+            "leuven",
+            "universiteit",
+            "nederlands"
+        ]
+    },
+    {
+        "questionType": "drag",
+        "question": "Plaats in de juiste volgorde:",
+        "options": [
+            "Mariken van Nijmegen",
+            "Renaissance",
+            "Verlichting",
+            "Guido Gezelle"
+        ],
+        "answer": [
+            "Mariken van Nijmegen",
+            "Renaissance",
+            "Verlichting",
+            "Guido Gezelle"
+        ]
+    },
+    {
+        "questionType": "select",
+        "question": "Wat is Ingevoons?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Kusttalen",
+                "correct": true
+            },
+            {
+                "ID": 1,
+                "text": "Meertalen",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Talen van net na het Proto-Europees",
+                "correct": false
+            },
+            {
+                "ID": 3,
+                "text": "De naam van een volk",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "ID": 3,
+        "questionType": "select",
+        "question": "Hoe noemt de oom van Mariken?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Heer Wijsbrecht",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Heer Gijsbrecht",
+                "correct": true
+            },
+            {
+                "ID": 2,
+                "text": "Heer Priester",
+                "correct": false
+            },
+            {   
+                "ID": 3,
+                "text": "Heer Zwijsbrecht",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "Vul aan: Lanceloet van ... (1 woord)",
+        "answer": "Denemerken"
+    },
+    {
+        "questionType": "select",
+        "question": "'Dierickx' is een voorbeeld van een ...",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Eigenschapsnaam",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Geografische naam",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Verwantschapsnaam",
+                "correct": true
+            },
+            {
+                "ID": 3,
+                "text": "Beroepsnaam",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "select",
+        "question": "Wie zijn de 3 bekende Nederlandse auteurs tijdens de renaissance?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Hoofd, Bredero, Huygens",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Hoofd, Brodero, Huygens",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Hoofd, Brodero, Huigens",
+                "correct": false
+            },
+            {
+                "ID": 3,
+                "text": "Hooft, Brodero, Huygens",
+                "correct": false
+            },
+            {
+                "ID": 4,
+                "text": "Hooft, Bredero, Huygens",
+                "correct": true
+            },
+            {
+                "ID": 5,
+                "text": "Hooft, Bredero, Huigens",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "Machiavelli was de auteur van ...",
+        "answer": "Il Principe"
+    },
+    {
+        "questionType": "txt",
+        "question": "Geef de naam van een bijzondere subcategorie van eufemismen die 40-ers goed onder de knie hebben (1 woord)",
+        "answer": "Managerstaal"
+    },
+    {
+        "questionType": "select",
+        "question": "Wat isde neutrale betekenis van 'laatste triomftocht'?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Lijkwade",
+                "correct": true
+            },
+            {
+                "ID": 1,
+                "text": "Laatste overwinning",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Laatste goede daad van iemand",
+                "correct": false
+            },
+            {
+                "ID": 3,
+                "text": "Hrt laatste dat iemand gedaan heeft",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "select",
+        "question": "Wat voor soort boek is 'De lof der Zotheid', van Erasmus?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Klucht",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Komedie",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Satire",
+                "correct": true
+            },
+            {
+                "ID": 3,
+                "text": "Poëzie",
+                "correct": false
+            },
+            {
+                "ID": 4,
+                "text": "Proza",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "Geef de leuze die van Bredero komt",
+        "answer": "Het kan verkeren"
+    },
+    {
+        "questionType": "select",
+        "question": "Een synopsis is een ...",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Uitleg",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Korte samenvatting",
+                "correct": true
+            },
+            {
+                "ID": 2,
+                "text": "Lange uitleg",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "select",
+        "question": "Wie zijn bijnaam was 'Prins der Dichters?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Erasmus van Rotterdam",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Bredero",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Guido Gezelle",
+                "correct": false
+            },
+            {
+                "ID": 3,
+                "text": "Hooft",
+                "correct": false
+            },
+            {
+                "ID": 4,
+                "text": "Huygens",
+                "correct": false
+            },
+            {
+                "ID": 5,
+                "text": "Joost van den Vondel",
+                "correct": true
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "Wat betekent 'Toponymie'",
+        "answer": "plaats"
+    }
+]

@@ -1,0 +1,10 @@
+{
+  "projectName": "quiz",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "node17"
+  },
+  "hash": "1df03cc2"
+}

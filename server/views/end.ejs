@@ -1,0 +1,14 @@
+<%- include ('./components/head') %> 
+<div class="d-flex flex-center flex-column question-false">
+    <h1 class="title fredoka">Oei</h1>
+    <div class="spacer"></div>
+    <h1 style="text-align: center; margin: 0px 5px;">De verbinding met de host is verbroken</h1>
+</div>
+
+<%- include('./components/scripts') %>
+<script defer>
+    setTimeout(() => {
+        window.location.href = "/"
+    }, 10000)
+</script>
+<%- include('./components/foot') %>

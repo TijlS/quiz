@@ -1,0 +1,30 @@
+<%- include ('./components/head', {
+    links: ['/css/pages/index.css']
+}) %> 
+<div class="d-flex flex-center flex-column">
+    <h1 class="title fredoka">Quiz</h1>
+    <div class="spacer"></div>
+    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#joinModal">Meedoen</button>
+</div>
+
+<div class="modal"
+    tabindex="-1"
+    id="joinModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1>Meedoen</h1>
+        </div>
+        <form autocomplete="off" action="/" method="POST">
+            <input type="hidden" name="uuid" value="<%- uuid %>">
+            <div class="modal-body">
+                <label for="name" class="form-label">Naam: </label>
+                <input id="name" type="text" required name="name" class="form-input" autocomplete="off">
+            </div>
+            <div class="modal-footer">
+                <button id="send" type="submit" class="btn btn-success">Doorgaan</button>
+            </div>
+        </form>
+    </div>
+</div>
+<%- include('./components/scripts') %>
+<%- include('./components/foot') %>

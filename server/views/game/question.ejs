@@ -1,0 +1,111 @@
+<%- include ('../components/head', {
+    links: ['/css/pages/question.css']
+}) %>
+<%
+const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+if(!locals.question){ %>
+    <script>
+        window.location.href = "/game/podium"
+    </script>
+<% }else{ %>
+
+<div class="question">
+    <h1 class="title fredoka">Vraag <%- number + 1 %></h1>
+    <h1 class="description"><%- question.question %></h1>
+    <% switch (question.questionType) {
+        case "txtarea":
+            %>
+            <form method="post" class="d-flex flex-center flex-column question-textarea">
+                <textarea placeholder="Typ hier je antwoord..." class="form-input" name="answer" cols="30" rows="10"></textarea>
+                <button type="submit" class="btn btn-success btn-wide">Antwoorden</button>
+            </form>
+            <%
+            break;
+        case "txt":
+            %>
+            <form method="post" class="d-flex flex-center flex-column question-textarea">
+                <input type="text" placeholder="Typ hier je antwoord..." class="form-input" name="answer">
+                <button type="submit" class="btn btn-success btn-wide">Antwoorden</button>
+            </form>
+            <%
+            break;
+        case "select":
+            shuffleArray(question.answers)
+            %>
+            <div class="question-select">
+                <form method="post">
+                    <% question.answers.forEach(answer => { %>
+                        <button type="submit" class="btn btn-question-answer-select" name="answer" value="<%- answer.ID %>"><%- answer.text %></button>
+                    <% }) %>
+                </form>
+            </div>
+            <%
+            break;
+        case "image":
+            shuffleArray(question.answers)
+            %>
+            <form method="post" class="d-flex question-image">
+                <% question.answers.forEach(answer => { %>
+                        <button class="btn btn-question-answer-image" type="submit" name="answer" value="<%- answer.ID %>"><img src="/assets/<%- answer.img %>" width="250"><%- answer.text ? answer.text : "" %></button>
+                <% }) %>
+            </form>
+            <%
+            break;
+        case "drag":
+            shuffleArray(question.options)
+            %>
+            <form id="answers" method="post" class="d-flex question-drag">
+                <div class="options">
+                    <% question.options.forEach(option => { %>
+                        <button type="button" class="btn btn-wide btn-question-answer-drag"><%- option %></button>
+                    <% }) %>
+                </div>
+                <input type="hidden" id="answer" name="answer">
+                <button type="submit" class="btn btn-success btn-wide">Antwoorden</button>
+            </form>
+            <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+            <script>
+                const options = document.querySelector('.options')
+                const answer = document.querySelector('#answer')
+                
+                const setAnswer = () => {
+                    let arr = new Array()
+
+                    document.querySelectorAll('.btn-question-answer-drag').forEach(text => {
+                        arr.push(text.textContent.toLowerCase())
+                    })
+
+                    answer.value = arr.join(';')
+                }
+
+                setAnswer()
+
+                const sortable = Sortable.create(options, {
+                    animation: 500,
+                    easing: "cubic-bezier(0.45, 0, 0.55, 1)",
+                    onEnd: () => setAnswer()
+                })
+            </script>
+            <%
+            break;
+    } %>
+</div>
+<%- include('../components/scripts') %>
+<script defer>
+    socket.on('start-game', () => {
+        window.location.href = "/game/question/0"
+    });
+    socket.on('show-answer', () => {
+        window.location.href = "/game/answer/<%- question.ID %>/false";
+    })
+</script>
+<% } %>
+<%- include('../components/foot') %>

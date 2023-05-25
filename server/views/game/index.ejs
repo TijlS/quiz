@@ -1,0 +1,12 @@
+<%- include ('../components/head') %> 
+<div class="d-flex flex-center flex-column">
+    <div class="loading"></div>
+</div>
+
+<%- include('../components/scripts') %>
+<script defer>
+    socket.on('start-game', () => {
+        window.location.href = "/game/question/0"
+    })
+</script>
+<%- include('../components/foot') %>

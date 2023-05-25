@@ -1,0 +1,27 @@
+.score-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 50px;
+}
+
+.score-container span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.question-correct {
+  background-color: #00b74a !important;
+  color: #fff;
+}
+
+.question-false {
+  background-color: #f93154 !important;
+  color: #fff;
+}
+
+/*# sourceMappingURL=answer.css.map */
