@@ -277,5 +277,81 @@
         "questionType": "txt",
         "question": "Wat betekent 'Toponymie'",
         "answer": "plaats"
+    },
+    {
+        "questionType": "select",
+        "question": "De toneelspelers van de late middeleeuwen werden meestal ingehuur door de ...",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "De adel en de geestelijken",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Stadsbesturen en de adel",
+                "correct": true
+            },
+            {
+                "ID": 2,
+                "text": "Het hof en de adel",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "Lanseloet van Denemerken was verliefd op ...",
+        "answer": "Sandrijn"
+    },
+    {
+        "questionType": "select",
+        "question": "Welke van de volgende zinnen is een voorbeeld van een sluiereufimisme?",
+        "answers": [
+            {
+                "ID": 0,
+                "text": "Ik zou haar eerder omschrijven als volslank.",
+                "correct": false
+            },
+            {
+                "ID": 1,
+                "text": "Zou ik ergens mijn handen kunnen wassen?",
+                "correct": false
+            },
+            {
+                "ID": 2,
+                "text": "Hij is gestorven aan een slepende ziekte.",
+                "correct": false
+            },
+            {
+                "ID": 3,
+                "text": "Het bedrijf voert enkele herstructureren door.",
+                "correct": true
+            },
+            {
+                "ID": 4,
+                "text": "Hij is zowel visueel als auditief gestoord.",
+                "correct": false
+            }
+        ]
+    },
+    {
+        "questionType": "txt",
+        "question": "De renaissance betekent letterlijk ... (1 woord)",
+        "answer": "wedergeboorte"
+    },
+    {
+        "questionType": "drag",
+        "question": "Plaats in de juiste volgorde:",
+        "options": [
+            "Erasmus van Rotterdam (geboortedatum)",
+            "Machiavelli (geboortedatum)",
+            "Utopia"
+        ],
+        "answer": [
+            "Erasmus van Rotterdam (geboortedatum)",
+            "Machiavelli (geboortedatum)",
+            "Utopia"
+        ]
     }
 ]
