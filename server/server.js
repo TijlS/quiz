@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 
 let players = [];
 let adminSocket = "";
+let currentQuestion = 0;
 
 const changeScore = (value) => {
 	for (var i in players) {
@@ -47,6 +48,17 @@ const getTopUsers = () => {
 	return players.slice(0, 3);
 }
 
+app.get('/restart_server', (req, res) => {
+	if(req.query.code !== "IwOsj8fK7jLt4EeyXPdiow==") return res.status(403).send('ERR: NOT AUTHENTICATED')
+
+	players = []
+	adminSocket = ""
+	currentQuestion = 0
+
+	questions = require('./questions.json')
+
+})
+
 app.get("/", (req, res) => {
 	res.render("index", {
 		uuid: uuidv4(),
@@ -68,8 +80,6 @@ app.post("/", (req, res) => {
 app.get("/end", (req, res) => {
 	res.render("end");
 });
-
-let currentQuestion = 0;
 
 //GAME
 app.get("/game", (req, res) => {
@@ -94,7 +104,6 @@ app.post("/game/question/:id", (req, res) => {
     const question = questions[req.params.id]
 	const answer = req.body.answer
 
-	console.log(`${req.cookies.uuid}: ${answer}`)
 
     switch (question.questionType) {
         case "select":
@@ -110,8 +119,6 @@ app.post("/game/question/:id", (req, res) => {
             const containsKeywords = question.keywords.every(keyword => {
 				return answer.toLowerCase().includes(keyword)
 			})
-
-			console.log(`${req.cookies.uuid}: containsKeyword: ${containsKeywords}`)
 
 			if(containsKeywords) {
 				correct = true
@@ -132,8 +139,6 @@ app.post("/game/question/:id", (req, res) => {
 
 			break;
     }
-
-	console.log(`${req.cookies.uuid}: correct: ${correct}`)
 	
 	res.render("game/wait", {
 		question: question,
