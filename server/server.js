@@ -13,6 +13,8 @@ const { v4: uuidv4 } = require("uuid");
 const cookieParser = require("cookie-parser");
 let questions = require("./questions.json");
 
+const basicAuth = require('express-basic-auth')
+
 app.set("views", "./server/views");
 app.set("view engine", "ejs");
 app.use(express.static("./server/public"));
@@ -60,7 +62,6 @@ app.get('/restart_server', (req, res) => {
 	console.warn('SERVER RESTARTING')
 
 	res.send('<CENTER><h1 style="color: yellow">SERVER RESTARTING...</h1></CENTER>')
-""
 })
 
 app.get("/", (req, res) => {
@@ -112,8 +113,6 @@ app.post("/game/question/:id", (req, res) => {
     switch (question.questionType) {
         case "select":
         case "image":
-			console.table(question.answers)
-			console.log(`ANSWER: ${question.answers.find(a => a.correct == true).text}`)
             if (question.answers[answer].correct === true) {
                 correct = true;
                 changeScore(req.cookies.uuid);
@@ -158,7 +157,12 @@ app.get("/game/podium", (req, res) => {
 });
 
 //CONTROL
-app.get("/admin", (req, res) => {
+app.get("/admin", basicAuth({
+	challenge: true,
+	users: { 
+		'admin': 'Tijl7965.'
+	}
+}), (req, res) => {
 	res.render("admin/index");
 });
 
