@@ -59,6 +59,8 @@ app.get('/restart_server', (req, res) => {
 
 	console.warn('SERVER RESTARTING')
 
+	res.send('<CENTER><h1 style="color: yellow">SERVER RESTARTING...</h1></CENTER>')
+""
 })
 
 app.get("/", (req, res) => {
