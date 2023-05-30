@@ -163,6 +163,8 @@ app.get("/admin", basicAuth({
 		'admin': 'Tijl7965.'
 	}
 }), (req, res) => {
+	if(adminSocket !== "") return res.status(400).send('<CENTER><h1>NOT AUTHORIZED</h1></CENTER>')
+
 	res.render("admin/index");
 });
 
