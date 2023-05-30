@@ -12,6 +12,7 @@
     <button class="btn btn-lg btn-dark btn-wide next-question" style="display: none;">Toon antwoord</button>
 
     <div class="users-container"></div>
+    <div class="voted">0/0 stemmen</div>
  
     <div class="podium" style="display: none;">
         <div class="stage third"><span></span><div class="score"></div></div>
@@ -24,6 +25,10 @@
 <script defer>
     socket.emit('register_admin')
     socket.emit('get_game_info')
+
+    socket.on('update_voted', (data) => {
+        document.querySelector('.voted').textContent = `${data.votes}/${data.playerCount} stemmen`
+    })
 
     const startGame = document.querySelector('.start-game');
     const nextQuestion = document.querySelector('.next-question');

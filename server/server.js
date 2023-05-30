@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 let players = [];
 let adminSocket = "";
 let currentQuestion = 0;
+let voted = 0
 
 const changeScore = (value) => {
 	for (var i in players) {
@@ -97,6 +98,7 @@ app.get("/game/question/:id", (req, res) => {
 	});
 });
 app.get("/game/answer/:id/:correct", (req, res) => {
+	voted = 0
 	res.render("game/answer", {
 		question: questions[req.params.id],
 		correct: req.params.correct,
@@ -108,6 +110,12 @@ app.post("/game/question/:id", (req, res) => {
 	let correct = false
     const question = questions[req.params.id]
 	const answer = req.body.answer
+	voted++
+
+	io.to(adminSocket).emit('update_voted', {
+		voted,
+		playerCount: players.length
+	})
 
 
     switch (question.questionType) {

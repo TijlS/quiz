@@ -8,6 +8,13 @@
   content: " speler(s)";
 }
 
+.voted {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  font-size: 20px;
+}
+
 .title {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
