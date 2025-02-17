@@ -1,85 +1,89 @@
-<%- include ('../components/head', {
-    links: ['/css/pages/admin.css']
-}) %> 
+<%- include ('../components/head', { links: ['/css/pages/admin.css'] }) %>
 
 
-<div class="d-flex flex-align flex-column">
-    <div class="user-count fredoka">0</div>
-    
-    <h1 class="title">Quiz</h1>
+    <div class="d-flex flex-align flex-column">
+        <div class="user-count fredoka">0</div>
 
-    <button class="btn btn-lg start-game btn-success">Start quiz</button>
-    <button class="btn btn-lg btn-dark btn-wide next-question" style="display: none;">Toon antwoord</button>
+        <h1 class="title">Quiz</h1>
 
-    <div class="users-container"></div>
-    <div class="voted">0/0 stemmen</div>
- 
-    <div class="podium" style="display: none;">
-        <div class="stage third"><span></span><div class="score"></div></div>
-        <div class="stage first"><span></span><div class="score"></div></div>
-        <div class="stage second"><span></span><div class="score"></div></div>
+        <button class="btn btn-lg start-game btn-success">Start quiz</button>
+        <button class="btn btn-lg btn-dark btn-wide next-question" style="display: none;">Toon antwoord</button>
+
+        <div class="users-container"></div>
+        <div class="voted">0/0 stemmen</div>
+
+        <div class="podium" style="display: none;">
+            <div class="stage third"><span></span>
+                <div class="score"></div>
+            </div>
+            <div class="stage first"><span></span>
+                <div class="score"></div>
+            </div>
+            <div class="stage second"><span></span>
+                <div class="score"></div>
+            </div>
+        </div>
     </div>
-</div>
 
-<%- include('../components/scripts') %>
-<script defer>
-    socket.emit('register_admin')
-    socket.emit('get_game_info')
+    <%- include('../components/scripts') %>
+        <script defer>
+            socket.emit('register_admin')
+            socket.emit('get_game_info')
 
-    socket.on('update_voted', (data) => {
-        document.querySelector('.voted').textContent = `${data.votes}/${data.playerCount} stemmen`
-    })
+            socket.on('update_voted', (data) => {
+                document.querySelector('.voted').textContent = `${data.voted}/${data.playerCount} stemmen`
+            })
 
-    const startGame = document.querySelector('.start-game');
-    const nextQuestion = document.querySelector('.next-question');
-    const usersContainer = document.querySelector('.users-container');
-    const userCount = document.querySelector('.user-count');
-    const podium = document.querySelector('.podium');
+            const startGame = document.querySelector('.start-game');
+            const nextQuestion = document.querySelector('.next-question');
+            const usersContainer = document.querySelector('.users-container');
+            const userCount = document.querySelector('.user-count');
+            const podium = document.querySelector('.podium');
 
-    let isAnswer = true, 
-        users = 0,
-        amountOfQuestions;
+            let isAnswer = true,
+                users = 0,
+                amountOfQuestions;
 
-    startGame.addEventListener('click', () => {
-        startGame.style.display = "none";
-        nextQuestion.style.display = "block";
-        socket.emit('start-game-server', true);
-    });
+            startGame.addEventListener('click', () => {
+                startGame.style.display = "none";
+                nextQuestion.style.display = "block";
+                socket.emit('start-game-server', true);
+            });
 
-    nextQuestion.addEventListener('click', () => {
-        socket.emit('show_answer-server', true);
-        nextQuestion.textContent = isAnswer ? "Volgende vraag" : "Toon antwoord";
-        if(isAnswer){
-            socket.emit('change-current-question', true);
-        }
-        isAnswer = !isAnswer;
-    });
+            nextQuestion.addEventListener('click', () => {
+                socket.emit('show_answer-server', true);
+                nextQuestion.textContent = isAnswer ? "Volgende vraag" : "Toon antwoord";
+                if (isAnswer) {
+                    socket.emit('change-current-question', true);
+                }
+                isAnswer = !isAnswer;
+            });
 
-    socket.on('game_info', gameinfo => {
-        amountOfQuestions = gameinfo.questionLength
-    })
-
+            socket.on('game_info', gameinfo => {
+                amountOfQuestions = gameinfo.questionLength
+            })
 
 
-    socket.on('user-joined', data => {
-        let userDiv = document.createElement('div');
-        userDiv.textContent = data.name;
-        usersContainer.append(userDiv);
-        users++
-        userCount.textContent = users;
-    })
+
+            socket.on('user-joined', data => {
+                let userDiv = document.createElement('div');
+                userDiv.textContent = data.name;
+                usersContainer.append(userDiv);
+                users++
+                userCount.textContent = users;
+            })
 
 
-    socket.on('game_ended', (top_users) => {
-        nextQuestion.style.display = "none";
-        usersContainer.style.display = "none";
-        podium.style.display = "flex";
-        document.querySelector('.first span').textContent = top_users['top_users'][0].name;
-        document.querySelector('.second span').textContent = top_users['top_users'][1] ? top_users['top_users'][1].name : ""
-        document.querySelector('.third span').textContent = top_users['top_users'][2] ? top_users['top_users'][2].name : ""
-        document.querySelector('.first .score').textContent = top_users['top_users'][0].score + `/${amountOfQuestions}`;
-        document.querySelector('.second .score').textContent = top_users['top_users'][1] ? top_users['top_users'][1].score + `/${amountOfQuestions}` : ""
-        document.querySelector('.third .score').textContent = top_users['top_users'][2] ? top_users['top_users'][2].score + `/${amountOfQuestions}` : ""
-    })
-</script>
-<%- include('../components/foot') %>
+            socket.on('game_ended', (top_users) => {
+                nextQuestion.style.display = "none";
+                usersContainer.style.display = "none";
+                podium.style.display = "flex";
+                document.querySelector('.first span').textContent = top_users['top_users'][0].name;
+                document.querySelector('.second span').textContent = top_users['top_users'][1] ? top_users['top_users'][1].name : ""
+                document.querySelector('.third span').textContent = top_users['top_users'][2] ? top_users['top_users'][2].name : ""
+                document.querySelector('.first .score').textContent = top_users['top_users'][0].score + `/${amountOfQuestions}`;
+                document.querySelector('.second .score').textContent = top_users['top_users'][1] ? top_users['top_users'][1].score + `/${amountOfQuestions}` : ""
+                document.querySelector('.third .score').textContent = top_users['top_users'][2] ? top_users['top_users'][2].score + `/${amountOfQuestions}` : ""
+            })
+        </script>
+        <%- include('../components/foot') %>
