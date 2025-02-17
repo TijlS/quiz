@@ -104,7 +104,7 @@ if(!locals.question){ %>
         window.location.href = "/game/question/0"
     });
     socket.on('show-answer', () => {
-        window.location.href = "/game/answer/<%- question.ID %>/false";
+        window.location.href = "/game/answer/<%- number %>/false";
     })
 </script>
 <% } %>
